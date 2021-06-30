@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeContact } from './../store/contacts';
-import { Contact } from './Contact';
+import Contact from './Contact';
 import './styling/contacts.css';
 
 export class Contacts extends React.Component {
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.searchFilter !== prevProps.searchFilter) {
-    }
-  }
-
   render() {
     return (
       <div className='all-contact-container'>

@@ -8,7 +8,7 @@ import WhiteCurveIcon from './icons/WhiteCurveIcon';
 import { Tooltip } from '@material-ui/core';
 import './styling/contact.css';
 
-export class Contact extends React.Component {
+class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,14 @@ export class Contact extends React.Component {
         >
           <WhiteCurveIcon className='curve-icon' />
           <div className='contact-image-background'>
-            <img className='contact-image' src={this.props.image} alt='' />
+            <img
+              className='contact-image'
+              src={
+                this.props.image ||
+                'https://robohash.org/estrerumquos.png?size=100x100&set=set1'
+              }
+              alt=''
+            />
           </div>
           <div className='inner-single-contact-information'>
             <div className='contact-name'>

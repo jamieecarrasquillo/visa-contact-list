@@ -1,0 +1,12 @@
+.search-placeholder {
+  padding: 10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #fbf3f3;
+  border-radius: 25px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  outline: none;
+  transition: opacity 100ms linear;
+}

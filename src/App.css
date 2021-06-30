@@ -1,38 +1,31 @@
-.App {
-  text-align: center;
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+  --page-background-color: #fef8f8;
+  --title-color: #a06784;
+  --contact-card-color: #fff;
+  --contact-text-color: #d7bdca;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-background-color);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  user-select: none;
 }

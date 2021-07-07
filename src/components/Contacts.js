@@ -25,6 +25,7 @@ export class Contacts extends React.Component {
                   lastName={contact.last_name}
                   phone={contact.phone}
                   image={contact.image}
+                  color={contact.color ? contact.color : ''}
                 />
               );
             })}

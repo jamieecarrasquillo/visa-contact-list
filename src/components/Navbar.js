@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddIcon from './icons/AddIcon';
 import SearchIcon from './icons/SearchIcon';
@@ -14,7 +14,6 @@ const Navbar = (props) => {
 
   useEffect(() => {
     window.addEventListener('scroll', (e) => {
-      console.log(e);
       console.log(document.documentElement.scrollTop);
       if (
         document.body.scrollTop > SCROLL_BREAKPOINT ||

@@ -1,13 +1,27 @@
-.new-contact-container {
-  background-color: var(--contact-card-color);
-  position: absolute;
-  top: 40%;
-  left: 50%;
+.outter-new-contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 5%;
+}
+
+.contact-preview-container {
   padding-top: 5px !important;
   padding-bottom: 18px;
   width: 100%;
   max-width: 400px;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-contact-container {
+  background-color: var(--contact-card-color);
+  padding-top: 5px !important;
+  padding-bottom: 18px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -26,13 +26,19 @@ class Contact extends React.Component {
   }
 
   render() {
+    console.log(this.props.color);
     return (
       <div
         className='single-contact-container'
         onMouseEnter={(e) => this.setState({ hover: true })}
         onMouseLeave={(e) => this.setState({ hover: false })}
         style={{
-          backgroundColor: this.props.index % 2 === 0 ? '#ECC5E0' : '#F2D1D8'
+          backgroundColor:
+            this.props.color.length >= 2
+              ? this.props.color
+              : this.props.index % 2 === 0
+              ? '#ECC5E0'
+              : '#F2D1D8'
         }}
         key={this.props.id}
       >

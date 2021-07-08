@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AddIcon from './icons/AddIcon';
 import SearchIcon from './icons/SearchIcon';
 import Search from './Search';
+import { changeSortTrigger } from './../store/sort';
 import { Tooltip } from '@material-ui/core';
 import './styling/navbar.css';
 
@@ -57,6 +59,12 @@ const Navbar = (props) => {
           </Link>
         </div>
         <div className='right-nav'>
+          <div
+            className='nav-buttons'
+            onClick={() => props.changeSort(props.sort)}
+          >
+            Sort
+          </div>
           <Link to='/contacts/new'>
             <Tooltip title='Add New' arrow>
               <div className='nav-buttons'>
@@ -70,4 +78,16 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    sort: state.sort
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeSort: (trigger) => dispatch(changeSortTrigger(trigger))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

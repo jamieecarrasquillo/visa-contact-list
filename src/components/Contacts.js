@@ -4,12 +4,32 @@ import { removeContact } from './../store/contacts';
 import Contact from './Contact';
 import './styling/contacts.css';
 
+const sort = (arr, willSort) => {
+  if (willSort) {
+    const newArr = [...arr];
+    return newArr.sort((a, b) => {
+      let aName = a.first_name.toLowerCase();
+      let bName = b.first_name.toLowerCase();
+
+      if (aName > bName) {
+        return 1;
+      }
+      if (aName < bName) {
+        return -1;
+      }
+      return 0;
+    });
+  } else {
+    return arr;
+  }
+};
+
 export class Contacts extends React.Component {
   render() {
     return (
       <div className='all-contact-container'>
         <div className='contact-container'>
-          {this.props.contacts
+          {sort(this.props.contacts, this.props.sort)
             .filter((contact) => {
               if (!this.props.searchFilter) return true;
               let fullName =
@@ -38,7 +58,8 @@ export class Contacts extends React.Component {
 const mapStateToProps = (state) => {
   return {
     contacts: state.contacts,
-    searchFilter: state.searchFilter
+    searchFilter: state.searchFilter,
+    sort: state.sort
   };
 };
 

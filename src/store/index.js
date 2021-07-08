@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import contactsReducer from './contacts';
 import filterReducer from './filter';
+import sortReducer from './sort';
 
 const reducer = combineReducers({
   contacts: contactsReducer,
-  searchFilter: filterReducer
+  searchFilter: filterReducer,
+  sort: sortReducer
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))

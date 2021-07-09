@@ -24,6 +24,20 @@ export class EditContact extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  componentDidMount() {
+    console.log(this.props.contacts);
+    let contact = this.props.contacts.find(
+      (contact) => contact.id === parseInt(this.props.match.params.id, 10)
+    );
+    this.setState({
+      first_name: contact.first_name,
+      last_name: contact.last_name,
+      email: contact.email,
+      phone: contact.phone
+    });
+    console.log('state changed', this.state);
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -32,7 +46,6 @@ export class EditContact extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Edit submitted' + this.state);
   }
 
   handleDelete(name, lastName) {
@@ -44,14 +57,6 @@ export class EditContact extends React.Component {
   }
 
   render() {
-    let selectedContact = this.props.contacts.filter((contact) => {
-      return contact.id === this.state.id;
-    });
-    let firstName = selectedContact[0].first_name;
-    let lastName = selectedContact[0].last_name;
-    let email = selectedContact[0].email;
-    let phone = selectedContact[0].phone;
-
     return (
       <div className='edit-contact-container'>
         <form className='contact-form' onSubmit={this.handleSubmit}>
@@ -67,7 +72,7 @@ export class EditContact extends React.Component {
               type='text'
               onChange={this.handleChange}
               value={this.state.first_name}
-              placeholder={firstName}
+              placeholder={this.state.first_name}
             />
 
             <input
@@ -75,7 +80,7 @@ export class EditContact extends React.Component {
               type='text'
               onChange={this.handleChange}
               value={this.state.last_name}
-              placeholder={lastName}
+              placeholder={this.state.last_name}
             />
 
             <input
@@ -83,7 +88,7 @@ export class EditContact extends React.Component {
               type='text'
               onChange={this.handleChange}
               value={this.state.email}
-              placeholder={email}
+              placeholder={this.state.email}
             />
 
             <input
@@ -91,7 +96,7 @@ export class EditContact extends React.Component {
               type='text'
               onChange={this.handleChange}
               value={this.state.phone}
-              placeholder={phone}
+              placeholder={this.state.phone}
             />
           </div>
         </form>
@@ -106,7 +111,18 @@ export class EditContact extends React.Component {
               <div
                 className='form-button'
                 type='submit'
-                onClick={() => this.props.update(this.state)}
+                onClick={() => {
+                  if (
+                    this.state.first_name === '' ||
+                    this.state.last_name === '' ||
+                    this.state.email === '' ||
+                    this.state.phone === ''
+                  ) {
+                    alert('Entries are not allowed to be empty.');
+                  } else {
+                    this.props.update(this.state);
+                  }
+                }}
               >
                 <SaveIcon width={15} />
               </div>
@@ -115,7 +131,9 @@ export class EditContact extends React.Component {
           <Tooltip title='Delete Contact' arrow>
             <div
               className='form-button'
-              onClick={() => this.handleDelete(firstName, lastName)}
+              onClick={() =>
+                this.handleDelete(this.state.first_name, this.state.last_name)
+              }
             >
               <DeleteIcon width={15} />
             </div>

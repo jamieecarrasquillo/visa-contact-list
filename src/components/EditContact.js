@@ -26,7 +26,7 @@ export class EditContact extends React.Component {
 
   componentDidMount() {
     console.log(this.props.contacts);
-    console.log('lol');
+    console.log('loreto');
     let contact = this.props.contacts.find(
       (contact) => contact.id === parseInt(this.props.match.params.id, 10)
     );

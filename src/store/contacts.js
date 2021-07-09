@@ -1,4 +1,5 @@
 import { contacts } from './mock-contacts';
+import history from '../history';
 
 // Action Types
 const ADD_CONTACT = 'ADD_CONTACT';
@@ -22,6 +23,7 @@ const contactsReducer = (state = initialState, action) => {
     case ADD_CONTACT:
       return [...state, action.contact];
     case REMOVE_CONTACT:
+      history.push('/');
       return state.filter((contact) => contact.id !== action.contactId);
     case UPDATE_CONTACT:
       let stateCopy = [...state];
